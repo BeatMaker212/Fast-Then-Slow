@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
 
     public LayerMask Ground;
 
-    bool isGrounded;
+    bool isGrounded = true;
 
     void Start()
     {
@@ -23,7 +23,6 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-
         //Sprint
         if (Input.GetKeyDown(SprintKey))
         {
@@ -35,7 +34,6 @@ public class PlayerMove : MonoBehaviour
         }
         //grounding
         isGrounded = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), 0.4f, Ground);
-
 
         //facing direction
         Debug.DrawLine(_camera.position, transform.forward * 2.5f);
@@ -49,8 +47,9 @@ public class PlayerMove : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
 
         //setting movement
-        Vector3 move = transform.right * x + transform.forward * y;
+            Vector3 move = transform.right * x + transform.forward * y;
 
-        rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
+            rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
+
     }
 }
