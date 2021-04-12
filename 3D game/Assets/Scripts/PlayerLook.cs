@@ -12,6 +12,7 @@ public class PlayerLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        PlayerBody.Rotate(0, 90, 0);
     }
 
     void Update()
