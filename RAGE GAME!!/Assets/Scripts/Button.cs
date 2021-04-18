@@ -10,9 +10,15 @@ public class Button : MonoBehaviour
 
     Transform playertrans;
 
-    public TextMeshPro Activatetxt;
+    public GameObject Activatetxt;
 
     public GameObject Player;
+
+    public bool dieOnTime = false;
+
+    public bool levelComplete = false;
+
+    public float DieTime = 7.5f;
 
     [SerializeField]
     string SceneName;
@@ -20,7 +26,11 @@ public class Button : MonoBehaviour
     public void Start()
     {
         playertrans = Player.transform;
-        Invoke("TextOn", 2f);
+        if (dieOnTime == true)
+        {
+            Invoke("DIE", DieTime);
+        }
+
     }
 
     public void FixedUpdate()
@@ -28,7 +38,18 @@ public class Button : MonoBehaviour
         float distance = Vector3.Distance(playertrans.position, transform.position);
         if (distance <= Radius && Input.GetKeyDown("e"))
         {
-            SceneManager.LoadScene(SceneName);
+            NextLevel();
+            Debug.Log("ree");
+        }
+
+        if (distance <= Radius)
+        {
+            Activatetxt.active = true;
+        }
+
+        if (distance >= Radius)
+        {
+            Activatetxt.active = false;
         }
     }
 
@@ -38,9 +59,17 @@ public class Button : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, Radius);
     }
 
-    public void TextOn()
+    public void DIE()
     {
-        Activatetxt.enabled = true;
-        Debug.Log("Enabled");
+        if (levelComplete == false)
+        {
+            FindObjectOfType<GameManager>().DIE();
+        }
+    }
+
+    public void NextLevel()
+    {
+        levelComplete = true;
+        FindObjectOfType<GameManager>().CompleteLevel();
     }
 }
