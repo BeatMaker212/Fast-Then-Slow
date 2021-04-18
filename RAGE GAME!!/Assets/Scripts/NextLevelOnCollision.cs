@@ -35,5 +35,6 @@ public class NextLevelOnCollision : MonoBehaviour
             {
                 FindObjectOfType<GameManager>().DieUI();
             }
+
     }
 }

@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown("q"))
         {
+            Debug.Log("Quit");
             Application.Quit();
         }
     }
