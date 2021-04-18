@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Button : MonoBehaviour
 {
     public float Radius = 50f;
 
     Transform playertrans;
+
+    public TextMeshPro Activatetxt;
 
     public GameObject Player;
 
@@ -17,6 +20,7 @@ public class Button : MonoBehaviour
     public void Start()
     {
         playertrans = Player.transform;
+        Invoke("TextOn", 2f);
     }
 
     public void FixedUpdate()
@@ -32,5 +36,11 @@ public class Button : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, Radius);
+    }
+
+    public void TextOn()
+    {
+        Activatetxt.enabled = true;
+        Debug.Log("Enabled");
     }
 }
