@@ -10,6 +10,8 @@ public class NextLevelOnCollision : MonoBehaviour
 
     [SerializeField]
     string SceneName;
+
+    public bool NextLevel = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,13 @@ public class NextLevelOnCollision : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == Player)
-            FindObjectOfType<GameManager>().NextLevel();
+            if (NextLevel == true)
+            {
+                FindObjectOfType<GameManager>().CompleteLevel();
+            }
+            else if (NextLevel == false)
+            {
+                FindObjectOfType<GameManager>().DieUI();
+            }
     }
 }
