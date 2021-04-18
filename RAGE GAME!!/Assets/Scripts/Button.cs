@@ -36,7 +36,7 @@ public class Button : MonoBehaviour
     public void FixedUpdate()
     {
         float distance = Vector3.Distance(playertrans.position, transform.position);
-        if (distance <= Radius && Input.GetKeyDown("e"))
+        if (distance <= Radius)
         {
             NextLevel();
             Debug.Log("ree");
@@ -63,7 +63,7 @@ public class Button : MonoBehaviour
     {
         if (levelComplete == false)
         {
-            FindObjectOfType<GameManager>().DIE();
+            FindObjectOfType<GameManager>().DieUI();
         }
     }
 
