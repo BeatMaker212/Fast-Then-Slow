@@ -55,7 +55,10 @@ public class PlayerMove : MonoBehaviour
 
     public void SlowMoNo()
     {
-        GetComponent<Rigidbody>().mass *= 2f;
+        if (GetComponent<Rigidbody>().)
+        {
+
+        }
         moveSpeed *= 2;
     }
 
