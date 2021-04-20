@@ -52,4 +52,15 @@ public class PlayerMove : MonoBehaviour
             rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
 
     }
+
+    public void SlowMoNo()
+    {
+        GetComponent<Rigidbody>().mass *= 2f;
+        moveSpeed *= 2;
+    }
+
+    public void NormSpeed()
+    {
+        moveSpeed /= 2;
+    }
 }

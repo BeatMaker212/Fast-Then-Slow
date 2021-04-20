@@ -7,7 +7,6 @@ public class SlowMo : MonoBehaviour
     public bool SlowMoActive;
     public float SlowMoTime = 5f;
     //public bool IsPlayer = false;
-    GameObject[] notplayer;
     public string speed;
     // Start is called before the first frame update
     void Start()
@@ -23,28 +22,27 @@ public class SlowMo : MonoBehaviour
 
     public void SlowMoStart()
     {
-        Debug.Log("Recieved request");
-        SlowMoActive = true;
-        //if (IsPlayer == false)
-        //{
+        if(SlowMoActive == false)
+        {
+            Debug.Log("Recieved request");
+            SlowMoActive = true;
             Time.timeScale = 0.5f;
-            //SlowMoActive = true;
-            //GetComponent<Rigidbody>().isKinematic = true;
             Invoke("SlowMoEnd", SlowMoTime);
             Debug.Log("Recieved request time frozen");
-        //}
+            FindObjectOfType<PlayerMove>().SlowMoNo();
+        }
 
     }
 
     public void SlowMoEnd()
     {
-        SlowMoActive = false;
-        //if (IsPlayer == true)
-        //{
+        if (SlowMoActive == true)
+        {
+            FindObjectOfType<PlayerMove>().NormSpeed();
+            SlowMoActive = false;
             Time.timeScale = 1f;
             Debug.Log("Time returned to normal");
-            //tComponent<Rigidbody>().isKinematic = false;
-        //}
+        }
     }
 
     public void SPEEEEEDStart()
