@@ -24,14 +24,14 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         //Sprint
-        if (Input.GetKeyDown(SprintKey))
-        {
-            moveSpeed = moveSpeed + 15f;
-        }
-        if (Input.GetKeyUp(SprintKey))
-        {
-            moveSpeed = moveSpeed - 15f;
-        }
+        //if (Input.GetKeyDown(SprintKey))
+        //{
+        //    moveSpeed = moveSpeed + 15f;
+        //}
+        // (Input.GetKeyUp(SprintKey))
+        //{
+        //    moveSpeed = moveSpeed - 15f;
+        //}
         //grounding
         isGrounded = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), 0.4f, Ground);
 
@@ -53,17 +53,21 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-    public void SlowMoNo()
+    public void FastBoi()
     {
-        if (GetComponent<Rigidbody>().)
-        {
-
-        }
-        moveSpeed *= 2;
+        Debug.Log("speed");
+        moveSpeed = 25f;
     }
 
-    public void NormSpeed()
+    public void SlowBoi()
     {
-        moveSpeed /= 2;
+        Debug.Log("Slow");
+        moveSpeed = 5f;
+    }
+
+    public void NormSpeedBoi()
+    {
+        Debug.Log("Norm");
+        moveSpeed = 10f;
     }
 }

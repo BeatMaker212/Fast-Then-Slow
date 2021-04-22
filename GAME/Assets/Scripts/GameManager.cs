@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown("g"))
         {
-            FindObjectOfType<SlowMo>().SlowMoStart();
-            Debug.Log("Slow mo request sent");
+            FindObjectOfType<SlowMo>().SPEEEEEDStart();
+            Debug.Log("speed request sent");
         }
         if (Input.GetKeyDown("f"))
         {
