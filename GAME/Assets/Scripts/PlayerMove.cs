@@ -70,4 +70,13 @@ public class PlayerMove : MonoBehaviour
         Debug.Log("Norm");
         moveSpeed = 10f;
     }
+
+
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        if (collisionInfo.collider.tag == "Enemy")
+        {
+            FindObjectOfType<GameManager>().DieUI();
+        }
+    }
 }
