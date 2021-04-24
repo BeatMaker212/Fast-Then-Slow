@@ -14,13 +14,19 @@ public class EnemyAI : MonoBehaviour
 
     public GameObject Player;
 
+    public GameObject PlayerObj;
+
     public bool PlayerDeadBool = false;
 
     Transform target;
     NavMeshAgent agent;
 
+    public bool NoEnd = false;
+
     void Start()
     {
+        PlayerObj = GameObject.FindGameObjectWithTag("Player");
+        Player = PlayerObj;
         target = Player.transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -50,8 +56,10 @@ public class EnemyAI : MonoBehaviour
             InRange = false;
         }
 
+
         
     }
+
 
     public void destoyEnemys()
     {

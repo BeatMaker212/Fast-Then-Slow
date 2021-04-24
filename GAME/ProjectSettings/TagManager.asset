@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Finish Goal
   - Enemy
+  - Ground
   layers:
   - Default
   - TransparentFX
