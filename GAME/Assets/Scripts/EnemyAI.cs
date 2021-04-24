@@ -14,6 +14,8 @@ public class EnemyAI : MonoBehaviour
 
     public GameObject Player;
 
+    public bool PlayerDeadBool = false;
+
     Transform target;
     NavMeshAgent agent;
 
@@ -28,15 +30,17 @@ public class EnemyAI : MonoBehaviour
     {
         float distance = Vector3.Distance(target.position, transform.position);
 
-        if (distance <= LookRadius)
+        if (distance <= LookRadius && PlayerDeadBool == false)
         {
             InRange = true;
 
             
+            if(PlayerDeadBool == false)
+            {
+                agent.SetDestination(target.position);
+            }
 
-            agent.SetDestination(target.position);
-
-            if(distance <= agent.stoppingDistance)
+            if(distance <= agent.stoppingDistance && PlayerDeadBool == false)
             {
                 FaceTarget();
             }
@@ -46,6 +50,12 @@ public class EnemyAI : MonoBehaviour
             InRange = false;
         }
 
+        
+    }
+
+    public void destoyEnemys()
+    {
+        Destroy(this.gameObject);
     }
 
     void FaceTarget()

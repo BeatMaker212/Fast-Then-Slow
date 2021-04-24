@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public PlayerMove PlayerMovement;
 
+    public bool LevelComplete = false;
+
     [SerializeField]
     string NextSceneName;
     // Start is called before the first frame update
@@ -50,8 +52,11 @@ public class GameManager : MonoBehaviour
 
     public void DieUI()
     {
-        PlayerMovement.enabled = false;
-        DIEUI.active = true;
+        if (LevelComplete == false)
+        {
+            PlayerMovement.enabled = false;
+            DIEUI.active = true;
+        }
     }
 
     public void RestartLevel()
@@ -62,6 +67,8 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
+        FindObjectOfType<EnemyAI>().destoyEnemys();
+        LevelComplete = true;
         PlayerMovement.enabled = false;
         CompleteLevelUI.active = true;
         Invoke("NextLevel", 3.5f);
@@ -69,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        LevelComplete = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

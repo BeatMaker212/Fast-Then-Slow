@@ -26,7 +26,7 @@ public class NextLevelOnCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == Player)
+        if (collision.collider.tag == "Player")
             if (NextLevel == true)
             {
                 FindObjectOfType<GameManager>().CompleteLevel();

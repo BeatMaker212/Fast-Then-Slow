@@ -77,6 +77,7 @@ public class PlayerMove : MonoBehaviour
         if (collisionInfo.collider.tag == "Enemy")
         {
             FindObjectOfType<GameManager>().DieUI();
+            FindObjectOfType<EnemyAI>().destoyEnemys();
         }
     }
 }
