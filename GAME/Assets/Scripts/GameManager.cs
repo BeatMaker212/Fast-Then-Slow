@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerMovement.enabled = false;
             DIEUI.active = true;
+            FindObjectOfType<Timer>().StopTimer();
         }
     }
 

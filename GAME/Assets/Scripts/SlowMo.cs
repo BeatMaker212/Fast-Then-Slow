@@ -11,6 +11,8 @@ public class SlowMo : MonoBehaviour
     public GameObject Number3;
     public GameObject Number4;
     public GameObject Number5;
+    public GameObject Slow;
+    public GameObject Fast;
     //public bool IsPlayer = false;
     // Start is called before the first frame update
     void Start()
@@ -26,30 +28,30 @@ public class SlowMo : MonoBehaviour
 
     public void SlowMoStart()
     {
-        if (SlowMoActive == false)
-        {
+
+        Slow.active = true;
             FindObjectOfType<PlayerMove>().SlowBoi();
-            SlowMoActive = true;
-            Invoke("Sppedstart", SlowMoTime);
+            Invoke("SlowMoEnd", SlowMoTime);
             Debug.Log("Recieved request time frozen");
-            //FindObjectOfType<PlayerMove>().SlowMoNo();
-        }
+        Text1();
+        //FindObjectOfType<PlayerMove>().SlowMoNo();
+
 
     }
 
     public void SlowMoEnd()
     {
-        if (SlowMoActive == true)
-        {
-            Text1();
+
+        Slow.active = false;
             FindObjectOfType<PlayerMove>().NormSpeedBoi();
             SlowMoActive = false;
             Debug.Log("Time returned to normal");
-        }
+        
     }
 
     public void SPEEEEEDStart()
     {
+        Fast.active = true;
         Text1();
         FindObjectOfType<PlayerMove>().FastBoi();
         Invoke("SPEEEEEDEnd", SlowMoTime);
@@ -58,6 +60,7 @@ public class SlowMo : MonoBehaviour
 
     public void SPEEEEEDEnd()
     {
+        Fast.active = false;
         FindObjectOfType<PlayerMove>().NormSpeedBoi();
     }
 

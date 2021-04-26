@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Spawner : MonoBehaviour
     public float SpawnTime = 1f;
 
     public bool SpawnReady = true;
+
     // Start is called before the first frame update
     void Start()
     {
